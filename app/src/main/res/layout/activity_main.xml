@@ -20,6 +20,8 @@
             android:hint="Enter City, Sate" />
 
         <Button
+            android:textSize="25dp"
+            android:background="@drawable/button_2"
             android:id="@+id/btnSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,6 +30,7 @@
     </LinearLayout>
 
     <TextView
+        android:textColor="#0977EB"
         android:id="@+id/textViewCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,6 +39,7 @@
         android:textSize="25dp" />
 
     <TextView
+        android:textColor="#0977EB"
         android:id="@+id/textViewCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +55,8 @@
         android:layout_marginTop="2dp" />
 
     <TextView
+        android:textColor="#F30202"
+        android:textStyle="bold"
         android:id="@+id/textViewTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,6 +66,7 @@
         android:textSize="35dp" />
 
     <TextView
+        android:textColor="#0977EB"
         android:id="@+id/textViewStatus"
         android:layout_marginTop="2dp"
         android:layout_width="wrap_content"
@@ -85,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:textColor="#0977EB"
             android:text="Độ ẩm"
             android:textSize="20dp"
             android:id="@+id/textViewHumidity"
@@ -102,6 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:textColor="#0977EB"
             android:text="Mây"
             android:textSize="20dp"
             android:id="@+id/textViewCloud"
@@ -119,6 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:textColor="#0977EB"
             android:text="Gió"
             android:textSize="20dp"
             android:id="@+id/textViewMill"
@@ -127,7 +137,7 @@
     </LinearLayout>
 </LinearLayout>
     <TextView
-        android:textColor="#1a1818"
+        android:textColor="#0977EB"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:text="Ngày cập nhật"
@@ -137,6 +147,7 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:background="@drawable/button_1"
         android:id="@+id/buttonSeeNextDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

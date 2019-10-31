@@ -76,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
                     long l = Long.valueOf(day);
                     Date date = new Date(l*1000L);
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE yyyy-MM-dd");
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE yyyy-MM-dd HH:mm:ss");
                     String dayNow = simpleDateFormat.format(date);
                     textViewDay.setText(dayNow);
                     JSONArray jsonArrayWeather = jsonObject.getJSONArray("weather");
                     JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
-                    String status = jsonObjectWeather.getString("main");
+                    String status = jsonObjectWeather.getString("description");
                     String icon = jsonObjectWeather.getString("icon");
                     Picasso.with(MainActivity.this).load("http://openweathermap.org/img/w/"+icon+".png").into(imgIcon);
                     textViewStatus.setText(status);
