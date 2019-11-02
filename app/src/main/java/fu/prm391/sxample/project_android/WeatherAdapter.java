@@ -87,7 +87,8 @@ public class WeatherAdapter extends BaseAdapter {
         textViewStatus.setText(w.getStatus());
         textViewMaxTemp.setText(w.getMaxTemp() + "°C");
         textViewMinTemp.setText(w.getMinTemp() + "°C");
-        Picasso.with(context).load("http://openweathermap.org/img/w/" + w.getImage() + ".png").into(imageViewStatus);
+       // Picasso.with(context).load("http://openweathermap.org/img/w/" + w.getImage() + ".png").into(imageViewStatus);
+        Picasso.with(context).load("https://www.weatherbit.io/static/img/icons/" + w.getImage() + ".png").into(imageViewStatus);
         return view;
     }
 }
