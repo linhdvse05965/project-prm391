@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailWeather">
+
+    <ImageView
+        android:id="@+id/imageBack"
+        android:layout_margin="2dp"
+        android:src="@drawable/back"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#0977EB"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Date"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#0977EB"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Ngày cập nhật"
+        android:id="@+id/textViewDayDetail"
+        android:textSize="40sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imageIconDetail"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp" />
+    <TextView
+        android:textColor="#F30202"
+        android:textStyle="bold"
+        android:id="@+id/textViewTempDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Nhiệt độ"
+        android:layout_marginTop="2dp"
+        android:textSize="35dp" />
+
+    <TextView
+        android:textColor="#0977EB"
+        android:id="@+id/textViewStatusDetail"
+        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Trạng thái"
+        android:textSize="30dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="Độ ẩm"
+                android:textSize="20dp"
+                android:id="@+id/textViewHumidityDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/could"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="Mây"
+                android:textSize="20dp"
+                android:id="@+id/textViewCloudDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/mill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="Gió"
+                android:textSize="20dp"
+                android:id="@+id/textViewMillDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/sunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="MT Mọc"
+                android:textSize="20dp"
+                android:id="@+id/textViewSunriseDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/sunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="MT Lặn"
+                android:textSize="20dp"
+                android:id="@+id/textViewSunsetDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/apsuat"
+                android:layout_width="50dp"
+                android:layout_height="48dp" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="Áp suất"
+                android:textSize="20dp"
+                android:id="@+id/textViewApSuatDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
