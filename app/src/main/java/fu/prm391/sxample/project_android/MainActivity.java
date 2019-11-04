@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,13 +23,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTextSearch;
     TextView textViewCity, textViewCountry, textViewTemp, textViewStatus, textViewHumidity, textViewCloud, textViewWind, textViewDay,textViewSunrise,textViewSunset,textViewApSuat;
     ImageView imgIcon;
-    Button btnSearch, btnNextDay;
+    Button btnSearch, btnNextDay ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,11 +1,20 @@
 package fu.prm391.sxample.project_android;
 
-public class weather {
+import java.io.Serializable;
+
+public class weather implements Serializable {
     private String Day;
     private String Status;
     private String Image;
     private String MaxTemp;
     private String MinTemp;
+    private String Wind;
+    private String Could;
+    private String Temp;
+    private String Sunrise;
+    private String SunSet;
+    private String Pressure;
+    private String Humidity;
 
     public weather(){
 
@@ -16,6 +25,31 @@ public class weather {
         Image = image;
         MaxTemp = maxTemp;
         MinTemp = minTemp;
+    }
+
+    public weather( String wind, String could, String temp, String sunrise, String sunSet, String pressure, String humidity) {
+        Wind = wind;
+        Could = could;
+        Temp = temp;
+        Sunrise = sunrise;
+        SunSet = sunSet;
+        Pressure = pressure;
+        Humidity = humidity;
+    }
+
+    public weather(String day, String status, String image, String maxTemp, String minTemp, String wind, String could, String temp, String sunrise, String sunSet, String pressure, String humidity) {
+        Day = day;
+        Status = status;
+        Image = image;
+        MaxTemp = maxTemp;
+        MinTemp = minTemp;
+        Wind = wind;
+        Could = could;
+        Temp = temp;
+        Sunrise = sunrise;
+        SunSet = sunSet;
+        Pressure = pressure;
+        Humidity = humidity;
     }
 
     public String getDay() {
@@ -56,5 +90,61 @@ public class weather {
 
     public void setMinTemp(String minTemp) {
         MinTemp = minTemp;
+    }
+
+    public String getWind() {
+        return Wind;
+    }
+
+    public void setWind(String wind) {
+        Wind = wind;
+    }
+
+    public String getCould() {
+        return Could;
+    }
+
+    public void setCould(String could) {
+        Could = could;
+    }
+
+    public String getTemp() {
+        return Temp;
+    }
+
+    public void setTemp(String temp) {
+        Temp = temp;
+    }
+
+    public String getSunrise() {
+        return Sunrise;
+    }
+
+    public void setSunrise(String sunrise) {
+        Sunrise = sunrise;
+    }
+
+    public String getSunSet() {
+        return SunSet;
+    }
+
+    public void setSunSet(String sunSet) {
+        SunSet = sunSet;
+    }
+
+    public String getPressure() {
+        return Pressure;
+    }
+
+    public void setPressure(String pressure) {
+        Pressure = pressure;
+    }
+
+    public String getHumidity() {
+        return Humidity;
+    }
+
+    public void setHumidity(String humidity) {
+        Humidity = humidity;
     }
 }

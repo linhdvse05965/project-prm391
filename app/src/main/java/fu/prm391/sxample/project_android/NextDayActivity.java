@@ -1,12 +1,16 @@
 package fu.prm391.sxample.project_android;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -50,6 +54,16 @@ public class NextDayActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+        registerForContextMenu(listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(),DetailWeather.class);
+                weather weather = weathers.get(i);
+                intent.putExtra("weathers",weather);
+                startActivity(intent);
             }
         });
     }
@@ -119,11 +133,42 @@ public class NextDayActivity extends AppCompatActivity {
                         String icon = jsonObjectWeather.getString("icon");
                         String maxTemp = jsonObjectData.getString("max_temp");
                         String minTemp = jsonObjectData.getString("min_temp");
+
+                        String wind = jsonObjectData.getString("wind_spd");
+                        Double doubleWind = Double.valueOf(wind);
+                        String wind_String = String.valueOf(doubleWind.intValue());
+
+                        String could = jsonObjectData.getString("clouds");
+                        String temp = jsonObjectData.getString("temp");
+                        Double doubleNhietDo = Double.valueOf(temp);
+                        String nhietDo_String = String.valueOf(doubleNhietDo.intValue());
+                        String sunRise = jsonObjectData.getString("sunrise_ts");
+                        String sunSet = jsonObjectData.getString("sunset_ts");
+
+                        long l1 = Long.valueOf(sunRise);
+                        Date date1 = new Date(l1*1000L);
+                        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
+                        String sun_Rise = simpleDateFormat1.format(date1);
+
+
+                        long l2 = Long.valueOf(sunSet);
+                        Date date2 = new Date(l2*1000L);
+                        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm");
+                        String sun_Set = simpleDateFormat2.format(date2);
+
+                        String pressure = jsonObjectData.getString("pres");
+                        Double doublePressure = Double.valueOf(pressure);
+                        String pressure_String = String.valueOf(doublePressure.intValue());
+
+                        String rh = jsonObjectData.getString("rh");
+
+
                         Double a = Double.valueOf(maxTemp);
                         Double b = Double.valueOf(minTemp);
                         String tempMax = String.valueOf(a.intValue());
                         String tempMin = String.valueOf(b.intValue());
-                        weathers.add(new weather(ngay, status, icon, tempMax, tempMin));
+                      //  weathers.add(new weather(ngay, status, icon, tempMax, tempMin));
+                        weathers.add(new weather(ngay, status, icon, tempMax, tempMin,wind_String,could,nhietDo_String,sun_Rise,sun_Set,pressure_String,rh));
                     }
                     weatherAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
@@ -140,5 +185,16 @@ public class NextDayActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+//    @Override
+//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//        super.onCreateContextMenu(menu, v, menuInfo);
+//        getMenuInflater().inflate(R.menu.contextmenu,menu);
+//    }
 
+//    @Override
+//    public boolean onContextItemSelected(@NonNull MenuItem item) {
+//        if(item.getItemId() == R.id.showmore){
+//        }
+//        return super.onContextItemSelected(item);
+//    }
 }

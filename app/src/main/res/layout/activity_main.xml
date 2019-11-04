@@ -222,4 +222,5 @@
         android:layout_marginTop="20dp"
         android:text="See next day"
         android:textSize="25dp" />
+
 </LinearLayout>
