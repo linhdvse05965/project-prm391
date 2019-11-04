@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +29,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTextSearch;
-    TextView textViewCity, textViewCountry, textViewTemp, textViewStatus, textViewHumidity, textViewCloud, textViewWind, textViewDay;
+    TextView textViewCity, textViewCountry, textViewTemp, textViewStatus, textViewHumidity, textViewCloud, textViewWind, textViewDay,textViewSunrise,textViewSunset,textViewApSuat;
     ImageView imgIcon;
     Button btnSearch, btnNextDay;
 
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public void GetCurrentWeather(String data) {
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
                     long l = Long.valueOf(day);
                     Date date = new Date(l*1000L);
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE yyyy-MM-dd HH:mm:ss");
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE yyyy-MM-dd");
                     String dayNow = simpleDateFormat.format(date);
                     textViewDay.setText(dayNow);
                     JSONArray jsonArrayWeather = jsonObject.getJSONArray("weather");
@@ -88,10 +90,13 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonObjectMain = jsonObject.getJSONObject("main");
                     String nhietDo = jsonObjectMain.getString("temp");
                     String doAm = jsonObjectMain.getString("humidity");
+                    String apSuat = jsonObjectMain.getString("pressure");
+
                     Double doubleNhietDo = Double.valueOf(nhietDo);
                     String nhietDo_String = String.valueOf(doubleNhietDo.intValue());
                     textViewTemp.setText(nhietDo_String+"°C");
                     textViewHumidity.setText(doAm+"%");
+                    textViewApSuat.setText(apSuat+" hPa");
 
                     JSONObject jsonObjectWind = jsonObject.getJSONObject("wind");
                     String gio = jsonObjectWind.getString("speed");
@@ -103,6 +108,21 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonObjectSys = jsonObject.getJSONObject("sys");
                     String country = jsonObjectSys.getString("country");
                     textViewCountry.setText("Country name : "+country);
+                    String sunRise = jsonObjectSys.getString("sunrise");
+                    String sunSet = jsonObjectSys.getString("sunset");
+                    long l1 = Long.valueOf(sunRise);
+                    Date date1 = new Date(l1*1000L);
+                    SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
+                    String sun_Rise = simpleDateFormat1.format(date1);
+                    textViewSunrise.setText(sun_Rise);
+
+                    long l2 = Long.valueOf(sunSet);
+                    Date date2 = new Date(l2*1000L);
+                    SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm");
+                    String sun_Set = simpleDateFormat2.format(date2);
+                    textViewSunset.setText(sun_Set);
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -125,9 +145,13 @@ public class MainActivity extends AppCompatActivity {
         textViewHumidity = findViewById(R.id.textViewHumidity);
         textViewCloud = findViewById(R.id.textViewCloud);
         textViewWind = findViewById(R.id.textViewMill);
+        textViewSunrise = findViewById(R.id.textViewSunrise);
+        textViewSunset = findViewById(R.id.textViewSunset);
+        textViewApSuat = findViewById(R.id.textViewApSuat);
         textViewDay = findViewById(R.id.textViewDay);
         imgIcon = findViewById(R.id.imageIcon);
         btnSearch = findViewById(R.id.btnSearch);
         btnNextDay = findViewById(R.id.buttonSeeNextDay);
+
     }
 }
