@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DetailWeather">
+    tools:context=".DetailWeather"
+    android:background="#222431">
 
     <ImageView
         android:id="@+id/imageBack"
@@ -14,29 +15,29 @@
         android:layout_width="25dp"
         android:layout_height="wrap_content" />
     <TextView
+        android:id="@+id/textViewViTri"
         android:textColor="#0977EB"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:text="Date"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
         android:textColor="#0977EB"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:layout_gravity="center"
         android:text="Ngày cập nhật"
         android:id="@+id/textViewDayDetail"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/imageIconDetail"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="20dp" />
     <TextView
         android:textColor="#F30202"
         android:textStyle="bold"
@@ -46,7 +47,7 @@
         android:layout_gravity="center"
         android:text="Nhiệt độ"
         android:layout_marginTop="2dp"
-        android:textSize="35dp" />
+        android:textSize="45dp" />
 
     <TextView
         android:textColor="#0977EB"
@@ -121,7 +122,7 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:weightSum="3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -181,4 +182,5 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

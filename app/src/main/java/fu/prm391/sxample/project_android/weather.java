@@ -15,29 +15,14 @@ public class weather implements Serializable {
     private String SunSet;
     private String Pressure;
     private String Humidity;
+    private String Vitri;
+    private String ThuNgay;
 
     public weather(){
 
     }
-    public weather(String day, String status, String image, String maxTemp, String minTemp) {
-        Day = day;
-        Status = status;
-        Image = image;
-        MaxTemp = maxTemp;
-        MinTemp = minTemp;
-    }
 
-    public weather( String wind, String could, String temp, String sunrise, String sunSet, String pressure, String humidity) {
-        Wind = wind;
-        Could = could;
-        Temp = temp;
-        Sunrise = sunrise;
-        SunSet = sunSet;
-        Pressure = pressure;
-        Humidity = humidity;
-    }
-
-    public weather(String day, String status, String image, String maxTemp, String minTemp, String wind, String could, String temp, String sunrise, String sunSet, String pressure, String humidity) {
+    public weather(String day, String status, String image, String maxTemp, String minTemp, String wind, String could, String temp, String sunrise, String sunSet, String pressure, String humidity, String vitri, String thuNgay) {
         Day = day;
         Status = status;
         Image = image;
@@ -50,6 +35,8 @@ public class weather implements Serializable {
         SunSet = sunSet;
         Pressure = pressure;
         Humidity = humidity;
+        Vitri = vitri;
+        ThuNgay = thuNgay;
     }
 
     public String getDay() {
@@ -146,5 +133,21 @@ public class weather implements Serializable {
 
     public void setHumidity(String humidity) {
         Humidity = humidity;
+    }
+
+    public String getVitri() {
+        return Vitri;
+    }
+
+    public void setVitri(String vitri) {
+        Vitri = vitri;
+    }
+
+    public String getThuNgay() {
+        return ThuNgay;
+    }
+
+    public void setThuNgay(String thuNgay) {
+        ThuNgay = thuNgay;
     }
 }

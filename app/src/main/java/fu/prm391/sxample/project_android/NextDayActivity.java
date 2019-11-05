@@ -56,13 +56,12 @@ public class NextDayActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        registerForContextMenu(listView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(),DetailWeather.class);
+                Intent intent = new Intent(getApplicationContext(), DetailWeather.class);
                 weather weather = weathers.get(i);
-                intent.putExtra("weathers",weather);
+                intent.putExtra("weathers", weather);
                 startActivity(intent);
             }
         });
@@ -121,7 +120,6 @@ public class NextDayActivity extends AppCompatActivity {
 //                }
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    // JSONObject jsonObjectCity = jsonObject.getJSONObject("city_name");
                     String nameCity = jsonObject.getString("city_name");
                     textViewName.setText(nameCity);
                     JSONArray jsonArrayData = jsonObject.getJSONArray("data");
@@ -146,13 +144,13 @@ public class NextDayActivity extends AppCompatActivity {
                         String sunSet = jsonObjectData.getString("sunset_ts");
 
                         long l1 = Long.valueOf(sunRise);
-                        Date date1 = new Date(l1*1000L);
+                        Date date1 = new Date(l1 * 1000L);
                         SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
                         String sun_Rise = simpleDateFormat1.format(date1);
 
 
                         long l2 = Long.valueOf(sunSet);
-                        Date date2 = new Date(l2*1000L);
+                        Date date2 = new Date(l2 * 1000L);
                         SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm");
                         String sun_Set = simpleDateFormat2.format(date2);
 
@@ -167,8 +165,13 @@ public class NextDayActivity extends AppCompatActivity {
                         Double b = Double.valueOf(minTemp);
                         String tempMax = String.valueOf(a.intValue());
                         String tempMin = String.valueOf(b.intValue());
-                      //  weathers.add(new weather(ngay, status, icon, tempMax, tempMin));
-                        weathers.add(new weather(ngay, status, icon, tempMax, tempMin,wind_String,could,nhietDo_String,sun_Rise,sun_Set,pressure_String,rh));
+
+                        String day = jsonObjectData.getString("ts");
+                        long l3 = Long.valueOf(day);
+                        Date date = new Date(l3 * 1000L);
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE,yyyy-MM-dd");
+                        String dayNow = simpleDateFormat.format(date);
+                        weathers.add(new weather(ngay, status, icon, tempMax, tempMin, wind_String, could, nhietDo_String, sun_Rise, sun_Set, pressure_String, rh,nameCity,dayNow));
                     }
                     weatherAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
@@ -184,17 +187,4 @@ public class NextDayActivity extends AppCompatActivity {
         });
         requestQueue.add(stringRequest);
     }
-
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//        getMenuInflater().inflate(R.menu.contextmenu,menu);
-//    }
-
-//    @Override
-//    public boolean onContextItemSelected(@NonNull MenuItem item) {
-//        if(item.getItemId() == R.id.showmore){
-//        }
-//        return super.onContextItemSelected(item);
-//    }
 }

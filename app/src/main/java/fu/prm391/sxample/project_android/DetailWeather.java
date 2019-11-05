@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 public class DetailWeather extends AppCompatActivity {
-    private TextView textViewDateD, textViewStatusD, textViewWindD, textViewCloudD, textViewTempD, textViewSunRiseD, textViewSunSetD, textViewPressureD, textViewRhD;
+    private TextView textViewDateD, textViewStatusD, textViewWindD, textViewCloudD, textViewTempD, textViewSunRiseD, textViewSunSetD, textViewPressureD, textViewRhD,textViewVitri,textViewThuNgay;
     private ImageView imageViewIconD,imgback;;
 
     @Override
@@ -31,15 +31,15 @@ public class DetailWeather extends AppCompatActivity {
         textViewPressureD.setText(w.getPressure()+" hPa");
         textViewRhD.setText(w.getHumidity()+"%");
         Picasso.with(DetailWeather.this).load("https://www.weatherbit.io/static/img/icons/" + w.getImage() + ".png").into(imageViewIconD);
+        textViewVitri.setText(w.getVitri());
+        textViewThuNgay.setText(w.getThuNgay());
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
-
     }
-
     private void getDatabyId() {
         textViewDateD = findViewById(R.id.textViewDayDetail);
         textViewStatusD = findViewById(R.id.textViewStatusDetail);
@@ -52,6 +52,8 @@ public class DetailWeather extends AppCompatActivity {
         textViewPressureD = findViewById(R.id.textViewApSuatDetail);
         textViewRhD = findViewById(R.id.textViewHumidityDetail);
         imgback = findViewById(R.id.imageBack);
+        textViewVitri = findViewById(R.id.textViewViTri);
+        textViewThuNgay = findViewById(R.id.textViewDayDetail);
 
     }
 }

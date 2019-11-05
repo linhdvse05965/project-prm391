@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NextDayActivity">
+    tools:context=".NextDayActivity"
+    android:background="#222431">
 <ImageView
     android:id="@+id/imageBack"
     android:layout_margin="2dp"

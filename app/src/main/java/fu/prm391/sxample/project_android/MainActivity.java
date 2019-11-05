@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
                     long l = Long.valueOf(day);
                     Date date = new Date(l*1000L);
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE yyyy-MM-dd");
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE,HH:mm aaa ");
                     String dayNow = simpleDateFormat.format(date);
                     textViewDay.setText(dayNow);
                     JSONArray jsonArrayWeather = jsonObject.getJSONArray("weather");
@@ -121,8 +121,6 @@ public class MainActivity extends AppCompatActivity {
                     SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm");
                     String sun_Set = simpleDateFormat2.format(date2);
                     textViewSunset.setText(sun_Set);
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
