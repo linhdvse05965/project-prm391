@@ -43,7 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp" />
             <TextView
-                android:textColor="#0977EB"
+                android:textColor="#ffb4b4"
                 android:id="@+id/textViewMaxTemp"
                 android:text="Max Temp"
                 android:textSize="18dp"

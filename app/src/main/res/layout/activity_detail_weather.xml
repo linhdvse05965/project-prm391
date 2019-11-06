@@ -55,7 +55,7 @@
             android:layout_marginLeft="15dp">
             <TextView
                 android:background="@drawable/border_set"
-                android:textColor="#0977EB"
+                android:textColor="#ffb4b4"
                 android:id="@+id/textViewMaxTempDetail"
                 android:text="max"
                 android:textSize="40dp"
