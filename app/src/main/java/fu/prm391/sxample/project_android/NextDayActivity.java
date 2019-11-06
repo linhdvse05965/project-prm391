@@ -77,47 +77,11 @@ public class NextDayActivity extends AppCompatActivity {
     }
 
     public void get7DayData(String data) {
-
-        // String url = "http://api.openweathermap.org/data/2.5/forecast?q="+data+"&units=metric&cnt=7&appid=4452c0a5d0c20a985f25c359aa7fb58c";
         String url = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + data + "&days=7&key=6cfc86ea9cad40eab7a8ba2ab1c5325a&fbclid=IwAR1UikV5mtjtlUTkeMCEeTnIAgk1gHDgiv64CrJHefxSdEz0zP-yqVJOgGY";
         RequestQueue requestQueue = Volley.newRequestQueue(NextDayActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                try {
-//                    JSONObject jsonObject = new JSONObject(response);
-//                    JSONObject jsonObjectCity = jsonObject.getJSONObject("city");
-//                    String name = jsonObjectCity.getString("name");
-//                    textViewName.setText(name);
-//                    JSONArray jsonArrayList = jsonObject.getJSONArray("list");
-//                    for (int i = 0; i < jsonArrayList.length(); i++) {
-//                        JSONObject jsonObjectList = jsonArrayList.getJSONObject(i);
-//                        String ngay = jsonObjectList.getString("dt");
-//                        long l = Long.valueOf(ngay);
-//                        Date date = new Date(l * 1000L);
-//                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE yyyy-MM-dd");
-//                        String dayNow = simpleDateFormat.format(date);
-//
-//                        JSONObject jsonObjectTemp = jsonObjectList.getJSONObject("main");
-//                        String maxTemp = jsonObjectTemp.getString("temp_max");
-//                        String minTemp = jsonObjectTemp.getString("temp_min");
-//                        Double a = Double.valueOf(maxTemp);
-//                        Double b = Double.valueOf(minTemp);
-//                        String tempMax = String.valueOf(a.intValue());
-//                        String tempMin = String.valueOf(b.intValue());
-//
-//                        JSONArray jsonArrayWeather = jsonObjectList.getJSONArray("weather");
-//                        JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
-//                        String status = jsonObjectWeather.getString("description");
-//                        String icon = jsonObjectWeather.getString("icon");
-//                        weathers.add(new weather(dayNow, status, icon, tempMax, tempMin));
-//
-//                    }
-//
-//                    weatherAdapter.notifyDataSetChanged();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String nameCity = jsonObject.getString("city_name");
@@ -171,7 +135,21 @@ public class NextDayActivity extends AppCompatActivity {
                         Date date = new Date(l3 * 1000L);
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE,yyyy-MM-dd");
                         String dayNow = simpleDateFormat.format(date);
-                        weathers.add(new weather(ngay, status, icon, tempMax, tempMin, wind_String, could, nhietDo_String, sun_Rise, sun_Set, pressure_String, rh,nameCity,dayNow));
+
+                        String pop = jsonObjectData.getString("pop");
+                        Double doublePop = Double.valueOf(pop);
+                        String pop_String = String.valueOf(doublePop.intValue());
+
+                        String vis = jsonObjectData.getString("vis");
+                        Double doubleVis = Double.valueOf(vis);
+                        String vis_String = String.valueOf(doubleVis.intValue());
+
+                        String snow = jsonObjectData.getString("snow");
+                        Double doubleSnow = Double.valueOf(snow);
+                        String snow_String = String.valueOf(doubleSnow.intValue());
+
+
+                        weathers.add(new weather(ngay, status, icon, tempMax, tempMin, wind_String, could, nhietDo_String, sun_Rise, sun_Set, pressure_String, rh,nameCity,dayNow,pop_String,vis_String,snow_String));
                     }
                     weatherAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {

@@ -17,12 +17,15 @@ public class weather implements Serializable {
     private String Humidity;
     private String Vitri;
     private String ThuNgay;
+    private String SacXuatMua;
+    private String Tamnhin;
+    private String Tuyet;
 
     public weather(){
 
     }
 
-    public weather(String day, String status, String image, String maxTemp, String minTemp, String wind, String could, String temp, String sunrise, String sunSet, String pressure, String humidity, String vitri, String thuNgay) {
+    public weather(String day, String status, String image, String maxTemp, String minTemp, String wind, String could, String temp, String sunrise, String sunSet, String pressure, String humidity, String vitri, String thuNgay, String sacXuatMua, String tamnhin, String tuyet) {
         Day = day;
         Status = status;
         Image = image;
@@ -37,6 +40,9 @@ public class weather implements Serializable {
         Humidity = humidity;
         Vitri = vitri;
         ThuNgay = thuNgay;
+        SacXuatMua = sacXuatMua;
+        Tamnhin = tamnhin;
+        Tuyet = tuyet;
     }
 
     public String getDay() {
@@ -149,5 +155,29 @@ public class weather implements Serializable {
 
     public void setThuNgay(String thuNgay) {
         ThuNgay = thuNgay;
+    }
+
+    public String getSacXuatMua() {
+        return SacXuatMua;
+    }
+
+    public void setSacXuatMua(String sacXuatMua) {
+        SacXuatMua = sacXuatMua;
+    }
+
+    public String getTamnhin() {
+        return Tamnhin;
+    }
+
+    public void setTamnhin(String tamnhin) {
+        Tamnhin = tamnhin;
+    }
+
+    public String getTuyet() {
+        return Tuyet;
+    }
+
+    public void setTuyet(String tuyet) {
+        Tuyet = tuyet;
     }
 }

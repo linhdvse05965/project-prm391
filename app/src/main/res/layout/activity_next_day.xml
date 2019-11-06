@@ -17,8 +17,9 @@
         android:id="@+id/textViewTenthanhpho"
         android:text="City"
         android:textStyle="bold"
-        android:textSize="30dp"
-        android:textColor="#9C2B2B"
+        android:textSize="45dp"
+        android:layout_gravity="center"
+        android:textColor="#0977EB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ListView

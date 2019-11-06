@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".DetailWeather"
     android:background="#222431">
-
     <ImageView
         android:id="@+id/imageBack"
         android:layout_margin="2dp"
@@ -31,13 +30,51 @@
         android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imageIconDetail"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp">
+            <TextView
+                android:background="@drawable/border_set"
+                android:textColor="#0977EB"
+                android:id="@+id/textViewMaxTempDetail"
+                android:text="max"
+                android:textSize="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
 
-    <ImageView
-        android:id="@+id/imageIconDetail"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp" />
+            <TextView
+                android:textColor="#0977EB"
+                android:id="@+id/textViewMinTempDetail"
+                android:text="min"
+                android:textSize="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+    </LinearLayout>
     <TextView
         android:textColor="#F30202"
         android:textStyle="bold"
@@ -48,7 +85,6 @@
         android:text="Nhiệt độ"
         android:layout_marginTop="2dp"
         android:textSize="45dp" />
-
     <TextView
         android:textColor="#0977EB"
         android:id="@+id/textViewStatusDetail"
@@ -58,6 +94,8 @@
         android:layout_gravity="center"
         android:text="Trạng thái"
         android:textSize="30dp" />
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
@@ -182,5 +220,66 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
 
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/rain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="S/x mưa"
+                android:textSize="20dp"
+                android:id="@+id/textViewSacXuatMuaDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/visibility1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="Tầm nhìn"
+                android:textSize="20dp"
+                android:id="@+id/textViewTamnhinDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/snow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#0977EB"
+                android:text="Tuyết"
+                android:textSize="20dp"
+                android:id="@+id/textViewTuyetDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

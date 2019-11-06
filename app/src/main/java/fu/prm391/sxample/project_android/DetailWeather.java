@@ -11,7 +11,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 public class DetailWeather extends AppCompatActivity {
-    private TextView textViewDateD, textViewStatusD, textViewWindD, textViewCloudD, textViewTempD, textViewSunRiseD, textViewSunSetD, textViewPressureD, textViewRhD,textViewVitri,textViewThuNgay;
+    private TextView textViewDateD, textViewStatusD, textViewWindD, textViewCloudD, textViewTempD, textViewSunRiseD, textViewSunSetD, textViewPressureD, textViewRhD,textViewVitri,textViewThuNgay
+            ,textViewmaxTempDetails,textViewminTempDeatails,textViewSacxuatmua,textViewTamnhin,textViewTuyet;
     private ImageView imageViewIconD,imgback;;
 
     @Override
@@ -33,6 +34,11 @@ public class DetailWeather extends AppCompatActivity {
         Picasso.with(DetailWeather.this).load("https://www.weatherbit.io/static/img/icons/" + w.getImage() + ".png").into(imageViewIconD);
         textViewVitri.setText(w.getVitri());
         textViewThuNgay.setText(w.getThuNgay());
+        textViewmaxTempDetails.setText(w.getMaxTemp()+"°C");
+        textViewminTempDeatails.setText(w.getMinTemp()+"°C");
+        textViewSacxuatmua.setText(w.getSacXuatMua()+"%");
+        textViewTamnhin.setText(w.getTamnhin()+"KM");
+        textViewTuyet.setText(w.getTuyet()+"mm");
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +60,10 @@ public class DetailWeather extends AppCompatActivity {
         imgback = findViewById(R.id.imageBack);
         textViewVitri = findViewById(R.id.textViewViTri);
         textViewThuNgay = findViewById(R.id.textViewDayDetail);
-
+        textViewmaxTempDetails = findViewById(R.id.textViewMaxTempDetail);
+        textViewminTempDeatails = findViewById(R.id.textViewMinTempDetail);
+        textViewSacxuatmua = findViewById(R.id.textViewSacXuatMuaDetail);
+        textViewTamnhin = findViewById(R.id.textViewTamnhinDetail);
+        textViewTuyet = findViewById(R.id.textViewTuyetDetail);
     }
 }

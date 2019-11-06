@@ -46,34 +46,6 @@ public class WeatherAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-//        TextView textViewDay,textViewStatus,textViewMaxTemp,textViewMinTemp;
-//        ImageView imageViewStatus;
-//        if(view == null){
-//            view = activity.getLayoutInflater().inflate(layout,null);
-//             textViewDay = (TextView) view.findViewById(R.id.textViewNgay);
-//             textViewStatus = (TextView) view.findViewById(R.id.textViewTrangThai);
-//             textViewMaxTemp = (TextView) view.findViewById(R.id.textViewMaxTemp);
-//             textViewMinTemp = (TextView) view.findViewById(R.id.textViewMinTemp);
-//             imageViewStatus = (ImageView) view.findViewById(R.id.imageViewTrangThai);
-//             view.setTag(R.id.textViewNgay,textViewDay);
-//             view.setTag(R.id.textViewTrangThai,textViewStatus);
-//             view.setTag(R.id.textViewMaxTemp,textViewMaxTemp);
-//             view.setTag(R.id.textViewMinTemp,textViewMinTemp);
-//             view.setTag(R.id.imageViewTrangThai,imageViewStatus);
-//        }else{
-//            textViewDay = (TextView)view.getTag(R.id.textViewNgay);
-//            textViewStatus = (TextView)view.getTag(R.id.textViewTrangThai);
-//            textViewMaxTemp = (TextView)view.getTag(R.id.textViewMaxTemp);
-//            textViewMinTemp = (TextView)view.getTag(R.id.textViewMinTemp);
-//            imageViewStatus = (ImageView)view.getTag(R.id.imageViewTrangThai);
-//        }
-//        weather w = arrayList.get(i);
-//        textViewDay.setText(w.getDay());
-//        textViewStatus.setText(w.getStatus());
-//        textViewMaxTemp.setText(w.getMaxTemp() + "°C");
-//        textViewMinTemp.setText(w.getMinTemp() + "°C");
-       // Picasso.with(NextDayActivity.this).load("http://openweathermap.org/img/w/" + w.getImage() + ".png").into(imageViewStatus);
-
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.daylistview,null);
         weather w = arrayList.get(i);
@@ -87,7 +59,6 @@ public class WeatherAdapter extends BaseAdapter {
         textViewStatus.setText(w.getStatus());
         textViewMaxTemp.setText(w.getMaxTemp() + "°C");
         textViewMinTemp.setText(w.getMinTemp() + "°C");
-       // Picasso.with(context).load("http://openweathermap.org/img/w/" + w.getImage() + ".png").into(imageViewStatus);
         Picasso.with(context).load("https://www.weatherbit.io/static/img/icons/" + w.getImage() + ".png").into(imageViewStatus);
         return view;
     }

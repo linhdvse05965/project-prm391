@@ -26,12 +26,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTextSearch;
-    TextView textViewCity, textViewCountry, textViewTemp, textViewStatus, textViewHumidity, textViewCloud, textViewWind, textViewDay,textViewSunrise,textViewSunset,textViewApSuat;
+    TextView textViewCity, textViewCountry, textViewTemp, textViewStatus, textViewHumidity, textViewCloud, textViewWind, textViewDay, textViewSunrise, textViewSunset, textViewApSuat;
     ImageView imgIcon;
-    Button btnSearch, btnNextDay ;
+    Button btnSearch, btnNextDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String city = editTextSearch.getText().toString();
-                if(city.equals("")){
+                if (city.equals("")) {
                     GetCurrentWeather("Hanoi");
-                }else{
+                } else {
                     GetCurrentWeather(city);
                 }
 
@@ -55,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String city = editTextSearch.getText().toString();
-                Intent intent = new Intent(MainActivity.this , NextDayActivity.class);
-                intent.putExtra("name",city);
+                Intent intent = new Intent(MainActivity.this, NextDayActivity.class);
+                intent.putExtra("name", city);
                 startActivity(intent);
             }
         });
@@ -65,62 +66,68 @@ public class MainActivity extends AppCompatActivity {
 
     public void GetCurrentWeather(String data) {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=" + data + "&units=metric&appid=4452c0a5d0c20a985f25c359aa7fb58c";
+        String url = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + data + "&days=1&key=6cfc86ea9cad40eab7a8ba2ab1c5325a&fbclid=IwAR1UikV5mtjtlUTkeMCEeTnIAgk1gHDgiv64CrJHefxSdEz0zP-yqVJOgGY";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    String day = jsonObject.getString("dt");
-                    String cityName = jsonObject.getString("name");
-                    textViewCity.setText("City name : " + cityName);
+                    String nameCity = jsonObject.getString("city_name");
+                    textViewCity.setText("City name : " + nameCity);
+                    String country_code = jsonObject.getString("country_code");
+                    textViewCountry.setText("Country code : " + country_code);
+                    JSONArray jsonArrayData = jsonObject.getJSONArray("data");
+                    for (int i = 0; i < jsonArrayData.length(); i++) {
+                        JSONObject jsonObjectData = jsonArrayData.getJSONObject(i);
 
-                    long l = Long.valueOf(day);
-                    Date date = new Date(l*1000L);
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE,HH:mm aaa ");
-                    String dayNow = simpleDateFormat.format(date);
-                    textViewDay.setText(dayNow);
-                    JSONArray jsonArrayWeather = jsonObject.getJSONArray("weather");
-                    JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
-                    String status = jsonObjectWeather.getString("description");
-                    String icon = jsonObjectWeather.getString("icon");
-                    Picasso.with(MainActivity.this).load("http://openweathermap.org/img/w/"+icon+".png").into(imgIcon);
-                    textViewStatus.setText(status);
-                    JSONObject jsonObjectMain = jsonObject.getJSONObject("main");
-                    String nhietDo = jsonObjectMain.getString("temp");
-                    String doAm = jsonObjectMain.getString("humidity");
-                    String apSuat = jsonObjectMain.getString("pressure");
+                        String temp = jsonObjectData.getString("temp");
+                        Double doubleNhietDo = Double.valueOf(temp);
+                        String nhietDo_String = String.valueOf(doubleNhietDo.intValue());
+                        textViewTemp.setText(nhietDo_String + "°C");
 
-                    Double doubleNhietDo = Double.valueOf(nhietDo);
-                    String nhietDo_String = String.valueOf(doubleNhietDo.intValue());
-                    textViewTemp.setText(nhietDo_String+"°C");
-                    textViewHumidity.setText(doAm+"%");
-                    textViewApSuat.setText(apSuat+" hPa");
+                        JSONObject jsonObjectWeather = jsonObjectData.getJSONObject("weather");
+                        String icon = jsonObjectWeather.getString("icon");
+                        Picasso.with(MainActivity.this).load("https://www.weatherbit.io/static/img/icons/" + icon + ".png").into(imgIcon);
 
-                    JSONObject jsonObjectWind = jsonObject.getJSONObject("wind");
-                    String gio = jsonObjectWind.getString("speed");
-                    textViewWind.setText(gio+"m/s");
+                        String status = jsonObjectWeather.getString("description");
+                        textViewStatus.setText(status);
 
-                    JSONObject jsonObjectCloud = jsonObject.getJSONObject("clouds");
-                    String may = jsonObjectCloud.getString("all");
-                    textViewCloud.setText(may+"%");
-                    JSONObject jsonObjectSys = jsonObject.getJSONObject("sys");
-                    String country = jsonObjectSys.getString("country");
-                    textViewCountry.setText("Country name : "+country);
-                    String sunRise = jsonObjectSys.getString("sunrise");
-                    String sunSet = jsonObjectSys.getString("sunset");
-                    long l1 = Long.valueOf(sunRise);
-                    Date date1 = new Date(l1*1000L);
-                    SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
-                    String sun_Rise = simpleDateFormat1.format(date1);
-                    textViewSunrise.setText(sun_Rise);
+                        String rh = jsonObjectData.getString("rh");
+                        textViewHumidity.setText(rh+"%");
 
-                    long l2 = Long.valueOf(sunSet);
-                    Date date2 = new Date(l2*1000L);
-                    SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm");
-                    String sun_Set = simpleDateFormat2.format(date2);
-                    textViewSunset.setText(sun_Set);
+                        String could = jsonObjectData.getString("clouds");
+                        textViewCloud.setText(could+"%");
+
+                        String wind = jsonObjectData.getString("wind_spd");
+                        Double doubleWind = Double.valueOf(wind);
+                        String wind_String = String.valueOf(doubleWind.intValue());
+                        textViewWind.setText(wind_String+"m/s");
+
+                        String sunRise = jsonObjectData.getString("sunrise_ts");
+                        String sunSet = jsonObjectData.getString("sunset_ts");
+
+                        long l1 = Long.valueOf(sunRise);
+                        Date date1 = new Date(l1 * 1000L);
+                        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
+                        String sun_Rise = simpleDateFormat1.format(date1);
+                        textViewSunrise.setText(sun_Rise);
+
+
+                        long l2 = Long.valueOf(sunSet);
+                        Date date2 = new Date(l2 * 1000L);
+                        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm");
+                        String sun_Set = simpleDateFormat2.format(date2);
+                        textViewSunset.setText(sun_Set);
+
+                        String pressure = jsonObjectData.getString("pres");
+                        Double doublePressure = Double.valueOf(pressure);
+                        String pressure_String = String.valueOf(doublePressure.intValue());
+                        textViewApSuat.setText(pressure_String+" hPa");
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("EEE,HH:mm aaa", Locale.getDefault());
+                        String currentDateandTime = sdf.format(new Date());
+                        textViewDay.setText(currentDateandTime);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
