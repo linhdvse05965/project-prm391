@@ -6,6 +6,7 @@ import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
 LinearLayout linearLayoutWeather;
 TextView textViewLocationHome,textViewMaxTempHome,textViewMinTempHome,textViewTempHome;
 ImageView imageIconHome;
+CalendarView calendarView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,7 @@ ImageView imageIconHome;
             }
         });
         getWeather("Ha Noi");
+
     }
     private void getDataById(){
         textViewLocationHome = findViewById(R.id.textViewLocationHome);
@@ -47,6 +50,7 @@ ImageView imageIconHome;
         textViewTempHome = findViewById(R.id.textViewTempHome);
         imageIconHome = findViewById(R.id.imageIconHome);
         linearLayoutWeather = findViewById(R.id.weatherlayout);
+        calendarView = findViewById(R.id.Calender);
     }
     public void getWeather(String data){
         String url = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + data + "&days=1&key=6cfc86ea9cad40eab7a8ba2ab1c5325a&fbclid=IwAR1UikV5mtjtlUTkeMCEeTnIAgk1gHDgiv64CrJHefxSdEz0zP-yqVJOgGY";
