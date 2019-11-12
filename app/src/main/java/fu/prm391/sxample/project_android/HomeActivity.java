@@ -40,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     CalendarView calendarView;
     FirebaseFirestore db;
     DialogInterface.OnClickListener diglogClickListener;
+    boolean flag;
 
 
     @Override
@@ -70,16 +71,18 @@ public class HomeActivity extends AppCompatActivity {
                                 if (date.toString().equals(doc.getString("date"))) {
                                     Intent intent = new Intent(HomeActivity.this, CalendarEventActivity.class);
                                     intent.putExtra("date", date);
-                                    intent.putExtra("event",doc.getString("event"));
+                                    intent.putExtra("event", doc.getString("event"));
                                     startActivity(intent);
-
+                                    flag = true;
+                                    break;
                                 } else {
-                                     diglogClickListener = new DialogInterface.OnClickListener() {
+                                    flag = false;
+                                    diglogClickListener = new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
                                             switch (i) {
                                                 case DialogInterface.BUTTON_POSITIVE:
-                                                    Intent intent2 = new Intent(HomeActivity.this,AddEventCalendarActivity.class);
+                                                    Intent intent2 = new Intent(HomeActivity.this, AddEventCalendarActivity.class);
                                                     intent2.putExtra("date", date);
                                                     startActivity(intent2);
                                                     break;
@@ -91,14 +94,17 @@ public class HomeActivity extends AppCompatActivity {
                                     };
                                 }
                             }
-                            AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-                            builder.setMessage("There were no events that day. Do you want add new events for this day?").setPositiveButton("Yes", diglogClickListener)
-                                    .setNegativeButton("No", diglogClickListener).show();
+                            Log.i("ketqua",flag+"");
+                            if (flag == false) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                                builder.setMessage("There were no events that day. Do you want add new events for this day?").setPositiveButton("Yes", diglogClickListener).setNegativeButton("No", diglogClickListener).show();
+                            }
+
+
                         }
                     }
+
                 });
-
-
             }
         });
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".NextDayActivity"
-    android:background="#222431">
+    android:background="@drawable/backgroud_design">
 <ImageView
     android:id="@+id/imageBack"
     android:layout_margin="2dp"

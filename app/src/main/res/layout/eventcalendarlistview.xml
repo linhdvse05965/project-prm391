@@ -12,7 +12,8 @@
         android:layout_x="35dp"
         android:layout_y="29dp"
         android:text="TextView"
-        android:textSize="20dp"
+        android:textSize="30dp"
+        android:textColor="#0977EB"
         tools:layout_editor_absoluteX="51dp"
         tools:layout_editor_absoluteY="31dp" />
 </AbsoluteLayout>

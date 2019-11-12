@@ -6,13 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".AddEventCalendarActivity">
+    tools:context=".AddEventCalendarActivity"
+    android:background="@drawable/backgroud_design">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create New Event"
+        android:textSize="40dp"
+        android:layout_marginBottom="50dp"
+        android:textColor="#0977EB"/>
     <EditText
         android:id="@+id/editTextAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter new Event for Calendar"
         android:layout_marginBottom="30dp"
+        android:textColor="#0977EB"
         android:textSize="25dp"/>
     <Button
         android:id="@+id/buttonAdd"

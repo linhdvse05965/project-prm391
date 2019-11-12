@@ -20,10 +20,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 public class CalendarEventActivity extends AppCompatActivity {
-    TextView textViewAddEvent;
     ListView listViewCalendar;
     FirebaseFirestore db;
-    String nameEvent;
     CalendarAdapter calendarAdapter;
     ArrayList<Calendar> listCalendar;
 
@@ -59,7 +57,6 @@ public class CalendarEventActivity extends AppCompatActivity {
     }
 
     private void getDataById() {
-        textViewAddEvent = findViewById(R.id.addEvent);
         listViewCalendar = findViewById(R.id.listViewCalendar);
         listCalendar = new ArrayList<Calendar>();
         calendarAdapter = new CalendarAdapter(CalendarEventActivity.this, listCalendar);
